@@ -13,7 +13,7 @@ config_version=5
 config/name="Speedy Saucer"
 run/main_scene="uid://dr75jsg6m6865"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://vai2nmeqy7ym"
 
 [display]
 
