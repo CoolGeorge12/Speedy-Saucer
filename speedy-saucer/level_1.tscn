@@ -1,19 +1,61 @@
-[gd_scene load_steps=5 format=3 uid="uid://dr75jsg6m6865"]
+[gd_scene load_steps=7 format=3 uid="uid://dr75jsg6m6865"]
 
 [ext_resource type="Texture2D" uid="uid://dg5xqiobtv1w3" path="res://purple.png" id="1_3hls8"]
 [ext_resource type="Script" uid="uid://cj387kt3lawdx" path="res://level.gd" id="1_hn12h"]
 [ext_resource type="PackedScene" uid="uid://cn5fwiia075no" path="res://player.tscn" id="2_hbghi"]
 [ext_resource type="PackedScene" uid="uid://crpaca3vr8nyf" path="res://maze.tscn" id="4_ihfcg"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_ihfcg"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_rka8t"]
+font_size = 24
+
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_hn12h")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Graphics" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Graphics"]
+layer = -10
+
+[node name="Background" type="TextureRect" parent="Graphics/CanvasLayer"]
 z_index = -1
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_3hls8")
 stretch_mode = 1
+
+[node name="StartLabel" type="Label" parent="Graphics"]
+offset_left = 528.0
+offset_top = 244.0
+offset_right = 623.0
+offset_bottom = 289.0
+text = "START"
+label_settings = SubResource("LabelSettings_ihfcg")
+
+[node name="Tutorial" type="Label" parent="Graphics"]
+offset_left = 283.0
+offset_top = 92.0
+offset_right = 817.0
+offset_bottom = 274.0
+text = "How to play:
+-Use arrow keys or WASD to control the player
+-Your goal is to reach the end of the maze
+-If you exit the maze the level will restart
+"
+label_settings = SubResource("LabelSettings_rka8t")
+
+[node name="EndLabel" type="Label" parent="Graphics"]
+offset_left = 858.0
+offset_top = 147.0
+offset_right = 953.0
+offset_bottom = 192.0
+text = "END"
+label_settings = SubResource("LabelSettings_ihfcg")
 
 [node name="Player" parent="." instance=ExtResource("2_hbghi")]
 z_index = 1
